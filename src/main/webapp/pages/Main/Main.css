@@ -1,0 +1,3 @@
+.wm-app .radio.custom-rad .caption:before, .wm-app .radio.custom-rad .caption:after {
+    border-radius: 0;
+}

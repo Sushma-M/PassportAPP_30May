@@ -1,0 +1,23 @@
+<wm-partial data-ng-controller="FreshPassportPageController" name="partial1">
+    <wm-panel subheading="subheading" iconclass="wi wi-account-circle" autoclose="outsideClick" title="Applicant Details" name="panel1">
+        <wm-liveform novalidate="false" errormessage="" title="" iconclass="wi wi-edit" defaultmode="Edit" dataset="bind:Variables.PassportAPPApplicantDetailsData.dataSet" captionalign="left" captionposition="top" name="liveform1">
+            <wm-layoutgrid columns="1" name="layoutgrid1">
+                <wm-gridrow name="gridrow1">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn1">
+                        <wm-form-field name="applicantGivenName" displayname="Applicant's Given Name (Given Name means First Name followed by middle Name (if any))" show="true" primary-key="false" generator="assigned" key="applicantGivenName" type="string"
+                        readonly="false" required="true" widget="text" maxchars="45" inputtype="text" placeholder="Enter value"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow2">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn2">
+                        <wm-form-field name="applicantSurName" displayname="Surname" show="true" primary-key="false" generator="assigned" key="applicantSurName" type="string" readonly="false" required="false" widget="text" maxchars="255" inputtype="text"
+                        placeholder="Enter value"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-form-field name="id" displayname="Id" show="false" primary-key="true" generator="identity" key="id" type="integer" readonly="true" required="true" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field>
+            <wm-form-action key="reset" display-name="Reset" show="true" class="form-reset btn-secondary" iconclass="wi wi-refresh" title="Reset" action="reset()" disabled="false" type="button" update-mode="true"></wm-form-action>
+            <wm-form-action key="save" display-name="Save" show="true" class="form-save btn-success" iconclass="wi wi-save" title="Save" disabled="false" type="submit" update-mode="true"></wm-form-action>
+        </wm-liveform>
+    </wm-panel>
+</wm-partial>
