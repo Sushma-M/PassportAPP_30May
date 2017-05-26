@@ -468,8 +468,8 @@
                     <wm-gridrow name="gridrow71_2">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn89_1">
                             <wm-label padding="unset 0.5em" name="label10" caption=""></wm-label>
-                            <wm-form-field displayname="Details of Previous/Current Diplomatic/Official Passport*" widget="radioset" show="true" type="custom" name="PreviousPPDetails_yes" dataset="bind:Variables.DetailsOfPrevorCurrentPP.dataSet"
-                            captionalign="left" captionposition="top" layout="inline" datafield="dataValue" displayfield="dataValue"></wm-form-field>
+                            <wm-form-field name="PreviousPPDetails_yes" displayname="Details of Previous/Current Diplomatic/Official Passport*" widget="radioset" show="true" type="custom" dataset="bind:Variables.DetailsOfPrevorCurrentPP.dataSet"
+                            captionalign="left" captionposition="top" layout="inline" datafield="dataValue" displayfield="dataValue" key="PreviousPPDetails_yes" placeholder=""></wm-form-field>
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow name="gridrow72_2">
@@ -478,23 +478,24 @@
                                 <wm-layoutgrid name="layoutgrid6">
                                     <wm-gridrow name="gridrow75">
                                         <wm-gridcolumn columnwidth="12" name="gridcolumn92_2">
-                                            <wm-form-field displayname="Passport Number" widget="text" show="true" type="custom" name="PreviousPPnum" placeholder="Enter Passport Number" maxchars="8" required="true" width="100%" regexp="^(?!^0+$)[a-zA-Z0-9]{3,20}$"
-                                            validationmessage="Enter valid Passport Number"></wm-form-field>
+                                            <wm-form-field name="PreviousPPnum" displayname="Passport Number" widget="text" show="true" type="custom" placeholder="Enter Passport Number" maxchars="8" required="true" width="100%" regexp="^(?!^0+$)[a-zA-Z0-9]{3,20}$"
+                                            validationmessage="Enter valid Passport Number" inputtype="text" key="PreviousPPnum"></wm-form-field>
                                         </wm-gridcolumn>
                                     </wm-gridrow>
                                     <wm-gridrow name="gridrow76">
                                         <wm-gridcolumn columnwidth="6" name="gridcolumn97_1">
-                                            <wm-form-field displayname="Date of Issue (DD/MM/YYYY)" widget="date" show="true" type="custom" name="PrevPPIssueDate" datepattern="dd/MM/yyyy" required="true" mindate="1540/01/01" maxdate="CURRENT_DATE" width="100%"
-                                            outputformat="dd/MM/yyyy"></wm-form-field>
+                                            <wm-form-field name="PrevPPIssueDate" displayname="Date of Issue (DD/MM/YYYY)" widget="date" show="true" type="custom" datepattern="dd/MM/yyyy" required="true" mindate="1540/01/01" maxdate="CURRENT_DATE" width="100%"
+                                            outputformat="dd/MM/yyyy" key="PrevPPIssueDate" placeholder="Select date"></wm-form-field>
                                         </wm-gridcolumn>
                                         <wm-gridcolumn columnwidth="6" name="gridcolumn94_2">
-                                            <wm-form-field displayname="Date of Expiry (DD/MM/YYYY)" widget="date" show="true" type="custom" datepattern="dd/MM/yyyy" required="true" mindate="1540/01/01" width="100%" name="PrevPPExpiryDate" outputformat="dd/MM/yyyy"
-                                            showweeks="false"></wm-form-field>
+                                            <wm-form-field name="PrevPPExpiryDate" displayname="Date of Expiry (DD/MM/YYYY)" widget="date" show="true" type="custom" datepattern="dd/MM/yyyy" required="true" mindate="1540/01/01" width="100%" outputformat="dd/MM/yyyy"
+                                            showweeks="false" key="PrevPPExpiryDate" placeholder="Select date"></wm-form-field>
                                         </wm-gridcolumn>
                                     </wm-gridrow>
                                     <wm-gridrow name="gridrow77">
                                         <wm-gridcolumn columnwidth="12" name="gridcolumn96_1">
-                                            <wm-form-field displayname="Place Of Issue" widget="text" show="true" type="custom" name="PrevPP_IssuePlace" required="false" validationmessage="Enter Passport Issue Place"></wm-form-field>
+                                            <wm-form-field name="PrevPP_IssuePlace" displayname="Place Of Issue" widget="text" show="true" type="custom" required="false" validationmessage="Enter Passport Issue Place" inputtype="text" key="PrevPP_IssuePlace"
+                                            placeholder="Enter value"></wm-form-field>
                                         </wm-gridcolumn>
                                     </wm-gridrow>
                                 </wm-layoutgrid>
@@ -503,11 +504,9 @@
                     </wm-gridrow>
                     <wm-gridrow name="gridrow73_1">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn91_2">
-                            <wm-form-field displayname="Have you ever applied for passport, but not issued? *" widget="radioset" show="true" type="custom" name="passportissueStatus" captionalign="left" captionposition="top" dataset="Yes, No" layout="inline"></wm-form-field>
+                            <wm-form-field name="passportissueStatus" displayname="Have you ever applied for passport, but not issued? *" widget="radioset" show="true" type="custom" captionalign="left" captionposition="top" dataset="Yes, No" layout="inline"
+                            key="passportissueStatus" placeholder=""></wm-form-field>
                         </wm-gridcolumn>
-                    </wm-gridrow>
-                    <wm-gridrow name="gridrow74">
-                        <wm-gridcolumn columnwidth="12" name="gridcolumn91_3"></wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
                 <wm-form-field name="id" displayname="Id" show="false" primary-key="true" generator="identity" key="id" type="integer" readonly="true" required="true" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field>
