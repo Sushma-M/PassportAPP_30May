@@ -1,0 +1,34 @@
+<wm-page data-ng-controller="Passportapp_addrsController" name="page1">
+    <wm-content name="content1">
+        <wm-layoutgrid name="layoutgrid2">
+            <wm-gridrow name="gridrow3">
+                <wm-gridcolumn columnwidth="6" name="gridcolumn4_1">
+                    <wm-composite name="MobileNumber" required="true" captionposition="left" horizontalalign="left">
+                        <wm-label class="col-md-3 control-label" name="label1" caption="Mobile Number"></wm-label>
+                        <wm-container class="col-md-9" name="container1">
+                            <wm-text name="text1" type="number" maxvalue="9999999999" required="true"></wm-text>
+                        </wm-container>
+                    </wm-composite>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="6" name="gridcolumn5">
+                    <wm-composite name="composite2" required="false" captionposition="left" horizontalalign="left">
+                        <wm-label class="col-md-3 control-label" name="label2" caption="Telephone Number" required="false"></wm-label>
+                        <wm-container class="col-md-9" name="container2">
+                            <wm-text name="text2" type="number"></wm-text>
+                        </wm-container>
+                    </wm-composite>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow4">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn7">
+                    <wm-composite name="composite3" required="true" captionposition="left" horizontalalign="left">
+                        <wm-label class="col-md-3 control-label" name="Email" caption="Email ID"></wm-label>
+                        <wm-container class="col-md-9" name="container3">
+                            <wm-text name="text3" type="email" regexp="^[a-zA-Z0-9.!#$%&amp;'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"></wm-text>
+                        </wm-container>
+                    </wm-composite>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+    </wm-content>
+</wm-page>

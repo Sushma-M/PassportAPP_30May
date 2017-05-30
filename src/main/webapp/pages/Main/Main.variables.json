@@ -562,15 +562,19 @@
     "category" : "wm.Variable",
     "dataBinding" : [ ],
     "dataSet" : [ {
+      "name" : "5th Pass or Less",
       "dataValue" : "5th Pass or Less"
     }, {
+      "name" : "6th and 9th standard",
       "dataValue" : "6th and 9th standard"
     }, {
+      "name" : "10th pass and above",
       "dataValue" : "10th pass and above"
     }, {
+      "name" : "Graduate and above",
       "dataValue" : "Graduate and above"
     } ],
-    "type" : "string",
+    "type" : "entry",
     "isList" : true,
     "saveInPhonegap" : false
   },
@@ -630,6 +634,53 @@
     }, {
       "name" : "Separated",
       "dataValue" : "Separated"
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "months" : {
+    "_id" : "wm-staticVariable1-wm.Variable-1495623957773",
+    "name" : "months",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "name" : "January",
+      "dataValue" : 1
+    }, {
+      "name" : "February",
+      "dataValue" : 2
+    }, {
+      "name" : "March",
+      "dataValue" : 3
+    }, {
+      "name" : "April",
+      "dataValue" : 4
+    }, {
+      "name" : "May",
+      "dataValue" : 5
+    }, {
+      "name" : "June",
+      "dataValue" : 6
+    }, {
+      "name" : "July",
+      "dataValue" : 7
+    }, {
+      "name" : "August",
+      "dataValue" : 8
+    }, {
+      "name" : "September",
+      "dataValue" : 9
+    }, {
+      "name" : "October",
+      "dataValue" : 10
+    }, {
+      "name" : "November",
+      "dataValue" : 11
+    }, {
+      "name" : "December",
+      "dataValue" : 12
     } ],
     "type" : "entry",
     "isList" : true,

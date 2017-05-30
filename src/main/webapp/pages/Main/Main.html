@@ -1,8 +1,13 @@
 <wm-page data-ng-controller="MainPageController" name="mainpage" pagetitle="Main">
     <wm-content name="content">
         <wm-page-content columnwidth="12" name="mainContent" padding="unset 15px">
-            <wm-liveform novalidate="false" errormessage="" title="Applicantdetails Info" iconclass="wi wi-edit" defaultmode="Edit" dataset="bind:Variables.PassportAPPApplicantDetailsData.dataSet" captionalign="left" captionposition="left" name="liveform1"
-            validationtype="inline">
+            <wm-html name="html4">
+                <h1 style="text-align: center;">&nbsp;PASSPORT APPLICATION FORM</h1>
+                <h1 style="text-align: center;">Government of India, Ministry of External Affairs</h1>
+                <p style="text-align: center;">Please read the Passport Instruction Booklet carefully before filling the form. Furnishing of incorrect information/ suppression of information would lead to rejection of application and would attract penal provisions as prescribed under
+                    the Passports Act, 1967. Please produce your original documents at the time of submission of the form. All fields marked with (*) are mandatory to fill.</p>
+            </wm-html>
+            <wm-liveform novalidate="false" errormessage="" title="Applicantdetails Info" iconclass="wi wi-edit" defaultmode="Edit" dataset="bind:Variables.PassportAPPApplicantDetailsData.dataSet" captionalign="left" captionposition="left" name="liveform1">
                 <wm-layoutgrid columns="1" name="layoutgrid1">
                     <wm-gridrow name="gridrow1">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn1">
@@ -12,7 +17,7 @@
                     </wm-gridrow>
                     <wm-gridrow name="gridrow2">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn2">
-                            <wm-container name="container1" show="bind:Widgets.liveform1.formWidgets.applyingfor.datavalue==='Re-issue of Passport'" deferload="true">
+                            <wm-container name="container1" show="bind:Widgets.liveform1.formWidgets.applyingfor.datavalue==='Re-issue of Passport'" deferload="true" class="bordered">
                                 <wm-form-field name="form_field6_1" displayname="If Re-Issue Specify Reason(s)" widget="radioset" show="true" type="custom" key="form_field6_1" placeholder="" dataset="bind:Variables.reissueReason.dataSet" datafield="dataValue"
                                 displayfield="dataValue" layout="inline" required="true" itemclass="media-list col-md-4 custom-rad" validationmessage="test"></wm-form-field>
                             </wm-container>
@@ -31,12 +36,13 @@
                     <wm-gridrow name="gridrow4">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn4">
                             <wm-form-field name="Applicantgivenname" displayname="Applicant's Given Name (Given Name means First Name followed by middle Name (if any))" widget="text" show="true" type="custom" placeholder="Enter applicant name" inputtype="text"
-                            key="form_field6" required="true" validationmessage="enter applicant name" maxchars="45" autocomplete="false" captionalign="left" captionposition="top"></wm-form-field>
+                            key="form_field6" required="true" validationmessage="bind:(Widgets.liveform1.formWidgets.Applicantgivenname.datavalue === '') || (Widgets.liveform1.formWidgets.Applicantgivenname.datavalue === undefined) ? ('Name cannot be empty') : ('Special Characters are not allowed')"
+                            maxchars="45" autocomplete="false" captionalign="left" captionposition="top" regexp="^[a-zA-Z-_]+$" updateon="blur"></wm-form-field>
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow name="gridrow5">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn5">
-                            <wm-form-field name="applicantsurname" displayname="surname" widget="text" show="true" type="custom" required="true" inputtype="text" key="applicantsurname" placeholder="Enter value" captionalign="left" captionposition="top"></wm-form-field>
+                            <wm-form-field name="applicantsurname" displayname="surname" widget="text" show="true" type="custom" required="true" inputtype="text" key="applicantsurname" placeholder="Enter value" captionalign="left" captionposition="top" regexp="^[a-zA-Z-_]+$"></wm-form-field>
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow name="gridrow1">
@@ -48,28 +54,30 @@
                     <wm-gridrow name="gridrow7">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn7">
                             <wm-form-field name="aliasnameconfirmation" displayname="Are you known by any other names(aliases)?" widget="radioset" show="true" type="custom" layout="inline" dataset="Yes, No" usekeys="false" on-click="aliasnameconfirmationClick($event, $scope)"
-                            key="aliasnameconfirmation" placeholder=""></wm-form-field>
-                            <wm-container name="container2_aliasesnameYes" show="bind:Widgets.liveform1.formWidgets.aliasnameconfirmation.datavalue === 'Yes'">
+                            key="aliasnameconfirmation" placeholder="" required="true"></wm-form-field>
+                            <wm-container name="container2_aliasesnameYes" show="bind:Widgets.liveform1.formWidgets.aliasnameconfirmation.datavalue === 'Yes'" class="bordered">
                                 <wm-gridrow name="gridrow4">
                                     <wm-gridcolumn columnwidth="12" name="gridcolumn4">
                                         <wm-form-field name="AliasName1" displayname="AliasName1 Given Name (Given Name means First Name followed by middle Name (if any))" widget="text" show="true" type="custom" placeholder="Enter applicant name" inputtype="text"
-                                        key="form_field6" required="true" validationmessage="enter applicantt name" maxchars="45" autocomplete="false" captionalign="left" captionposition="top"></wm-form-field>
+                                        key="form_field6" required="true" validationmessage="enter applicantt name" maxchars="45" autocomplete="false" captionalign="left" captionposition="top" regexp="^[a-zA-Z-_]+$"></wm-form-field>
                                     </wm-gridcolumn>
                                 </wm-gridrow>
                                 <wm-gridrow name="gridrow5">
                                     <wm-gridcolumn columnwidth="12" name="gridcolumn5">
-                                        <wm-form-field name="AliasSurname1" displayname="surname" widget="text" show="true" type="custom" required="true" inputtype="text" key="applicantsurname" placeholder="Enter value" captionalign="left" captionposition="top"></wm-form-field>
+                                        <wm-form-field name="AliasSurname1" displayname="surname" widget="text" show="true" type="custom" required="true" inputtype="text" key="applicantsurname" placeholder="Enter value" captionalign="left" captionposition="top"
+                                        regexp="^[a-zA-Z-_]+$"></wm-form-field>
                                     </wm-gridcolumn>
                                 </wm-gridrow>
                                 <wm-gridrow name="gridrow4">
                                     <wm-gridcolumn columnwidth="12" name="gridcolumn4">
                                         <wm-form-field name="Aliasname2" displayname="AliasName2 Given Name (Given Name means First Name followed by middle Name (if any))" widget="text" show="true" type="custom" placeholder="Enter applicant name" inputtype="text"
-                                        key="form_field6" required="false" validationmessage="enter applicantt name" maxchars="45" autocomplete="false" captionalign="left" captionposition="top"></wm-form-field>
+                                        key="form_field6" required="false" validationmessage="enter applicantt name" maxchars="45" autocomplete="false" captionalign="left" captionposition="top" regexp="^[a-zA-Z-_]+$"></wm-form-field>
                                     </wm-gridcolumn>
                                 </wm-gridrow>
                                 <wm-gridrow name="gridrow5">
                                     <wm-gridcolumn columnwidth="12" name="gridcolumn5">
-                                        <wm-form-field name="AliasSurname2" displayname="surname" widget="text" show="true" type="custom" required="false" inputtype="text" key="applicantsurname" placeholder="Enter value" captionalign="left" captionposition="top"></wm-form-field>
+                                        <wm-form-field name="AliasSurname2" displayname="surname" widget="text" show="true" type="custom" required="false" inputtype="text" key="applicantsurname" placeholder="Enter value" captionalign="left" captionposition="top"
+                                        regexp="^[a-zA-Z-_]+$"></wm-form-field>
                                     </wm-gridcolumn>
                                 </wm-gridrow>
                             </wm-container>
@@ -77,29 +85,31 @@
                     </wm-gridrow>
                     <wm-gridrow name="gridrow72">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn7">
-                            <wm-form-field name="namechangeconfirmation" displayname="Have you ever changed your Name?*" widget="radioset" show="true" type="custom" layout="inline" dataset="Yes, No" usekeys="false" on-click="aliasnameconfirmationClick($event, $scope)"
-                            key="aliasnameconfirmation" placeholder=""></wm-form-field>
-                            <wm-container name="container_nameChangeYes" show="bind:Widgets.liveform1.formWidgets.namechangeconfirmation.datavalue === 'Yes'">
+                            <wm-form-field name="namechangeconfirmation" displayname="Have you ever changed your Name?" widget="radioset" show="true" type="custom" layout="inline" dataset="Yes, No" usekeys="false" on-click="aliasnameconfirmationClick($event, $scope)"
+                            key="aliasnameconfirmation" placeholder="" required="true"></wm-form-field>
+                            <wm-container name="container_nameChangeYes" show="bind:Widgets.liveform1.formWidgets.namechangeconfirmation.datavalue === 'Yes'" class="bordered">
                                 <wm-gridrow name="gridrow4">
                                     <wm-gridcolumn columnwidth="12" name="gridcolumn4">
                                         <wm-form-field name="Namechange1" displayname="Previous Name1 Given Name (Given Name means First Name followed by middle Name (if any))" widget="text" show="true" type="custom" placeholder="Enter applicant name" inputtype="text"
-                                        key="form_field6" required="true" validationmessage="enter applicantt name" maxchars="45" autocomplete="false" captionalign="left" captionposition="top"></wm-form-field>
+                                        key="form_field6" required="true" validationmessage="enter applicantt name" maxchars="45" autocomplete="false" captionalign="left" captionposition="top" regexp="^[a-zA-Z-_]+$"></wm-form-field>
                                     </wm-gridcolumn>
                                 </wm-gridrow>
                                 <wm-gridrow name="gridrow5">
                                     <wm-gridcolumn columnwidth="12" name="gridcolumn5">
-                                        <wm-form-field name="NamechangeSurname1" displayname="surname" widget="text" show="true" type="custom" required="true" inputtype="text" key="applicantsurname" placeholder="Enter value" captionalign="left" captionposition="top"></wm-form-field>
+                                        <wm-form-field name="NamechangeSurname1" displayname="surname" widget="text" show="true" type="custom" required="true" inputtype="text" key="applicantsurname" placeholder="Enter value" captionalign="left" captionposition="top"
+                                        regexp="^[a-zA-Z-_]+$"></wm-form-field>
                                     </wm-gridcolumn>
                                 </wm-gridrow>
                                 <wm-gridrow name="gridrow4">
                                     <wm-gridcolumn columnwidth="12" name="gridcolumn4">
                                         <wm-form-field name="Namechangename2" displayname="Previous Name2 Given Name (Given Name means First Name followed by middle Name (if any))" widget="text" show="true" type="custom" placeholder="Enter applicant name"
-                                        inputtype="text" key="form_field6" required="false" validationmessage="enter applicantt name" maxchars="45" autocomplete="false" captionalign="left" captionposition="top"></wm-form-field>
+                                        inputtype="text" key="form_field6" required="false" validationmessage="enter applicantt name" maxchars="45" autocomplete="false" captionalign="left" captionposition="top" regexp="^[a-zA-Z-_]+$"></wm-form-field>
                                     </wm-gridcolumn>
                                 </wm-gridrow>
                                 <wm-gridrow name="gridrow5">
                                     <wm-gridcolumn columnwidth="12" name="gridcolumn5">
-                                        <wm-form-field name="NameChangeSurname2" displayname="surname" widget="text" show="true" type="custom" required="false" inputtype="text" key="applicantsurname" placeholder="Enter value" captionalign="left" captionposition="top"></wm-form-field>
+                                        <wm-form-field name="NameChangeSurname2" displayname="surname" widget="text" show="true" type="custom" required="false" inputtype="text" key="applicantsurname" placeholder="Enter value" captionalign="left" captionposition="top"
+                                        regexp="^[a-zA-Z-_]+$"></wm-form-field>
                                     </wm-gridcolumn>
                                 </wm-gridrow>
                             </wm-container>
@@ -129,11 +139,12 @@
                     </wm-gridrow>
                     <wm-gridrow name="gridrow16">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn16">
-                            <wm-container name="container3" show="bind:Widgets.liveform1.formWidgets.Birthplaceconfirmation.datavalue === 'Yes'">
-                                <wm-form-field name="CountryBirthplace" displayname="country" widget="select" show="true" type="custom" dataset="bind:Variables.CountriesList.dataSet" datafield="dataValue" displayfield="dataValue" key="form_field17" placeholder="Select value"></wm-form-field>
+                            <wm-container name="container3" show="bind:Widgets.liveform1.formWidgets.Birthplaceconfirmation.datavalue === 'Yes'" class="bordered">
+                                <wm-form-field name="CountryBirthplace" displayname="country" widget="select" show="true" type="custom" dataset="bind:Variables.CountriesList.dataSet|filter : {dataValue: '!India'}" displayfield="dataValue" key="form_field17"
+                                placeholder="Select value"></wm-form-field>
                                 <wm-label padding="unset 0.5em" name="label3" caption="If born before 15/08/1947 in a place now in Pakistan or Bangldesh, select &quot;Undivided India.&quot;"></wm-label>
                             </wm-container>
-                            <wm-container name="container4" show="bind:Widgets.liveform1.formWidgets.Birthplaceconfirmation.datavalue === 'No'">
+                            <wm-container name="container4" show="bind:Widgets.liveform1.formWidgets.Birthplaceconfirmation.datavalue === 'No'" class="bordered">
                                 <wm-layoutgrid name="layoutgrid2">
                                     <wm-gridrow name="gridrow17">
                                         <wm-gridcolumn columnwidth="6" name="gridcolumn17">
@@ -186,7 +197,7 @@
                     <wm-gridrow name="gridrow51">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn67">
                             <wm-form-field name="EducationQualification" displayname="Educational qualification" widget="select" show="true" type="custom" required="true" dataset="bind:Variables.EduactionQualification.dataSet" key="EducationQualification"
-                            placeholder="Select value"></wm-form-field>
+                            placeholder="Select value" datafield="All Fields" displayfield="dataValue"></wm-form-field>
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow name="gridrow22">
@@ -202,15 +213,15 @@
                             <wm-form-field name="Aadharnum" displayname="Aadhar Number" widget="text" show="true" type="custom" inputtype="number" maxchars="12" key="Aadharnum" placeholder="Enter value"></wm-form-field>
                         </wm-gridcolumn>
                     </wm-gridrow>
-                    <wm-gridrow name="gridrow24">
-                        <wm-gridcolumn columnwidth="12" name="gridcolumn32">
-                            <wm-form-field name="aadharAgreement" displayname="I agree" widget="radioset" show="true" type="custom" dataset="Yes, No" layout="inline" itemclass="media-list col-md-4 custom-rad" key="aadharAgreement" placeholder=""></wm-form-field>
-                        </wm-gridcolumn>
-                    </wm-gridrow>
                     <wm-gridrow name="gridrow26">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn36">
                             <wm-html name="html1">I, the holder of above mentioned Aadhaar Number , hereby give my consent to Passport Seva to obtain my Aadhaar Number, Name and Fingerprint/Iris for authentication with UIDAI. I have no objection using my identity and biometric
                                 information for validation with Aadhaar (CIDR) database only for the purpose of authentication.</wm-html>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow24">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn32">
+                            <wm-form-field name="aadharAgreement" displayname="I agree" widget="radioset" show="true" type="custom" dataset="Yes, No" layout="inline" itemclass="media-list col-md-4 custom-rad" key="aadharAgreement" placeholder="" required="true"></wm-form-field>
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow name="gridrow59">
@@ -255,7 +266,7 @@
                     </wm-gridrow>
                     <wm-gridrow name="gridrow47">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn58">
-                            <wm-container name="container_OutofIndia_yes" show="bind:Widgets.liveform1.formWidgets.presentaddressoutofIndia.datavalue === 'Yes'">
+                            <wm-container name="container_OutofIndia_yes" show="bind:Widgets.liveform1.formWidgets.presentaddressoutofIndia.datavalue === 'Yes'" class="bordered">
                                 <wm-layoutgrid name="layoutgrid3">
                                     <wm-gridrow name="gridrow72_1">
                                         <wm-gridcolumn columnwidth="12" name="gridcolumn92_1">
@@ -270,7 +281,8 @@
                                     </wm-gridrow>
                                     <wm-gridrow name="gridrow41">
                                         <wm-gridcolumn columnwidth="6" name="gridcolumn46">
-                                            <wm-form-field name="Country" displayname="Country" widget="text" show="true" type="custom" required="true" inputtype="text" key="Country" placeholder="Enter value"></wm-form-field>
+                                            <wm-form-field displayname="Country" widget="autocomplete" show="true" type="custom" name="Country" placeholder="Enter / Select country name" dataset="bind:Variables.CountriesList.dataSet|filter : {dataValue: '!India'}"
+                                            required="true" displaylabel="dataValue" searchkey="dataValue" datafield="dataValue" validationmessage="Select Country.."></wm-form-field>
                                         </wm-gridcolumn>
                                         <wm-gridcolumn columnwidth="6" name="gridcolumn47">
                                             <wm-form-field name="StateORProvince" displayname="State/Province" widget="text" show="true" type="custom" required="false" inputtype="text" key="StateORProvince" placeholder="Enter value"></wm-form-field>
@@ -284,26 +296,20 @@
                                             <wm-form-field name="ZipCode" displayname="Zip Code" widget="text" show="true" type="custom" inputtype="number" maxchars="6" required="false" key="ZipCode" placeholder="Enter value"></wm-form-field>
                                         </wm-gridcolumn>
                                     </wm-gridrow>
-                                    <wm-gridrow name="gridrow43">
-                                        <wm-gridcolumn columnwidth="4" name="gridcolumn49">
-                                            <wm-form-field name="MobileNumberoutofIndia" displayname="Mobile Number" widget="text" show="true" type="custom" required="true" inputtype="number" maxchars="10" key="MobileNumberoutofIndia" placeholder="Enter value"></wm-form-field>
-                                        </wm-gridcolumn>
-                                        <wm-gridcolumn columnwidth="4" name="gridcolumn51">
-                                            <wm-form-field name="TelephoneNumberoutofIndia" displayname="Telephone Number" widget="text" show="true" type="custom" inputtype="number" maxvalue="15" key="TelephoneNumberoutofIndia" placeholder="Enter value"></wm-form-field>
-                                        </wm-gridcolumn>
-                                        <wm-gridcolumn columnwidth="4" name="gridcolumn50">
-                                            <wm-form-field name="residingfrommonth" displayname="Month" widget="select" show="true" type="custom" required="true" dataset="01,02,03,04,05,06,07,08,09,10,11,12" datafield="All Fields" key="residingfrommonth"
-                                            placeholder="Select value"></wm-form-field>
-                                        </wm-gridcolumn>
-                                    </wm-gridrow>
                                 </wm-layoutgrid>
                             </wm-container>
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow name="gridrow39">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn43_1">
-                            <wm-container name="container_outofIndia_No" show="bind:Widgets.liveform1.formWidgets.presentaddressoutofIndia.datavalue === 'No'">
+                            <wm-container name="container_outofIndia_No" show="bind:Widgets.liveform1.formWidgets.presentaddressoutofIndia.datavalue === 'No'" class="bordered">
                                 <wm-layoutgrid name="layoutgrid4">
+                                    <wm-gridrow name="gridrow99">
+                                        <wm-gridcolumn columnwidth="12" name="gridcolumn120">
+                                            <wm-form-field displayname="Residing Since" widget="date" show="true" type="custom" name="ResidingSince" datepattern="dd/MM/yyyy" outputformat="dd/MM/yyyy" required="true" mindate="bind:Widgets.liveform1.formWidgets.ApplicantDOB.datavalue"
+                                            maxdate="CURRENT_DATE"></wm-form-field>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
                                     <wm-gridrow name="gridrow68">
                                         <wm-gridcolumn columnwidth="12" name="gridcolumn89">
                                             <wm-form-field name="housenumandstreetnameWithinIndia" displayname="House Number and Street Name" widget="text" show="true" type="custom" required="true" captionalign="left" captionposition="top" inputtype="text"
@@ -331,21 +337,13 @@
                                             <wm-form-field name="PINCodewithininida" displayname="PIN" widget="text" show="true" type="custom" inputtype="number" required="true" key="PINCodewithininida" placeholder="Enter value"></wm-form-field>
                                         </wm-gridcolumn>
                                     </wm-gridrow>
-                                    <wm-gridrow name="gridrow48_1">
-                                        <wm-gridcolumn columnwidth="6" name="gridcolumn62">
-                                            <wm-form-field name="MobileNumberwithinIndia" displayname="Mobile Number" widget="text" show="true" type="custom" required="true" inputtype="number" maxchars="10" key="MobileNumberwithinIndia" placeholder="Enter value"></wm-form-field>
-                                        </wm-gridcolumn>
-                                        <wm-gridcolumn columnwidth="6" name="gridcolumn63">
-                                            <wm-form-field name="TelephoneNumberwithinIndia" displayname="Telephone Number" widget="text" show="true" type="custom" inputtype="number" maxvalue="15" key="TelephoneNumberwithinIndia" placeholder="Enter value"></wm-form-field>
-                                        </wm-gridcolumn>
-                                    </wm-gridrow>
                                 </wm-layoutgrid>
                             </wm-container>
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow name="gridrow69">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn94">
-                            <wm-form-field name="EmailID" displayname="Email ID" widget="text" show="true" type="custom" inputtype="email" key="EmailID" placeholder="Enter value"></wm-form-field>
+                            <wm-prefab prefabname="passportapp_addrs" name="passportapp_addrs1" show="bind:Widgets.liveform1.formWidgets.presentaddressoutofIndia.datavalue === 'Yes' || Widgets.liveform1.formWidgets.presentaddressoutofIndia.datavalue === 'No'"></wm-prefab>
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow name="gridrow34">
@@ -356,7 +354,7 @@
                     </wm-gridrow>
                     <wm-gridrow name="gridrow36">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn43">
-                            <wm-container show="bind:Widgets.liveform1.formWidgets.permanataddrssameaspresentaddrs.datavalue === 'No'" name="container7_Permanentaddrsnotsame">
+                            <wm-container show="bind:Widgets.liveform1.formWidgets.permanataddrssameaspresentaddrs.datavalue === 'No'" name="container7_Permanentaddrsnotsame" class="bordered">
                                 <wm-layoutgrid name="layoutgrid5">
                                     <wm-gridrow name="gridrow60">
                                         <wm-gridcolumn columnwidth="12" name="gridcolumn79">
@@ -384,8 +382,8 @@
                                     </wm-gridrow>
                                     <wm-gridrow name="gridrow55">
                                         <wm-gridcolumn columnwidth="12" name="gridcolumn74">
-                                            <wm-form-field name="CountryIfabroad" displayname="Country (if Abroad)" widget="select" show="true" type="custom" dataset="bind:Variables.CountriesList.dataSet" datafield="dataValue" displayfield="dataValue" key="form_field17"
-                                            placeholder="Select value"></wm-form-field>
+                                            <wm-form-field name="CountryIfabroad" displayname="Country (if Abroad)" widget="select" show="true" type="custom" dataset="bind:Variables.CountriesList.dataSet|filter : {dataValue: '!India'}" datafield="dataValue"
+                                            displayfield="dataValue" key="form_field17" placeholder="Select value"></wm-form-field>
                                         </wm-gridcolumn>
                                     </wm-gridrow>
                                     <wm-gridrow name="gridrow58">
@@ -398,7 +396,7 @@
                                     </wm-gridrow>
                                     <wm-gridrow name="gridrow56">
                                         <wm-gridcolumn columnwidth="6" name="gridcolumn75">
-                                            <wm-form-field name="permanetMobnum" displayname="Mobile Number" widget="text" show="true" type="custom" required="true" inputtype="number" maxchars="10" key="permanetMobnum" placeholder="Enter value"></wm-form-field>
+                                            <wm-form-field name="permanetMobnum" displayname="Mobile Number" widget="text" show="true" type="custom" required="true" inputtype="number" maxchars="10" key="permanetMobnum" placeholder="Enter value" maxvalue="9999999999"></wm-form-field>
                                         </wm-gridcolumn>
                                         <wm-gridcolumn columnwidth="6" name="gridcolumn76">
                                             <wm-form-field name="permanentTelenum" displayname="Telephone Number" widget="text" show="true" type="custom" inputtype="number" maxvalue="15" key="permanentTelenum" placeholder="Enter value"></wm-form-field>
@@ -418,17 +416,9 @@
                             <wm-form-field name="emergencyContactname" displayname="Name and Address" widget="text" show="true" type="custom" captionalign="left" captionposition="top" required="true" inputtype="text" key="emergencyContactname" placeholder="Enter value"></wm-form-field>
                         </wm-gridcolumn>
                     </wm-gridrow>
-                    <wm-gridrow name="gridrow73">
-                        <wm-gridcolumn columnwidth="6" name="gridcolumn94_1">
-                            <wm-form-field name="emergencyMobnum" displayname="Mobile Number" widget="text" show="true" type="custom" required="true" inputtype="number" maxchars="10" key="emergencyMobnum" placeholder="Enter value"></wm-form-field>
-                        </wm-gridcolumn>
-                        <wm-gridcolumn columnwidth="6" name="gridcolumn95_1">
-                            <wm-form-field name="emergencytelephonenum" displayname="Telephone Number" widget="text" show="true" type="custom" inputtype="number" maxvalue="15" key="emergencytelephonenum" placeholder="Enter value"></wm-form-field>
-                        </wm-gridcolumn>
-                    </wm-gridrow>
                     <wm-gridrow name="gridrow62">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn85">
-                            <wm-form-field name="emergencycontactEmail" displayname="Email ID" widget="text" show="true" type="custom" inputtype="email" key="emergencycontactEmail" placeholder="Enter value"></wm-form-field>
+                            <wm-prefab prefabname="passportapp_addrs" name="passportapp_addrs2"></wm-prefab>
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow name="gridrow63_1">
@@ -440,7 +430,7 @@
                     </wm-gridrow>
                     <wm-gridrow name="gridrow64">
                         <wm-gridcolumn columnwidth="6" name="gridcolumn82_1">
-                            <wm-form-field name="firstrefMobnum" displayname="Mobile Number" widget="text" show="true" type="custom" required="false" inputtype="number" maxchars="10" key="firstrefMobnum" placeholder="Enter value"></wm-form-field>
+                            <wm-form-field name="firstrefMobnum" displayname="Mobile Number" widget="text" show="true" type="custom" required="false" inputtype="number" maxchars="9999999999" key="firstrefMobnum" placeholder="Enter value"></wm-form-field>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="6" name="gridcolumn97">
                             <wm-form-field name="firstreftelephonenum" displayname="Telephone Number" widget="text" show="true" type="custom" inputtype="number" maxvalue="15" key="firstreftelephonenum" placeholder="Enter value"></wm-form-field>
@@ -454,7 +444,7 @@
                     </wm-gridrow>
                     <wm-gridrow name="gridrow66">
                         <wm-gridcolumn columnwidth="6" name="gridcolumn85_1">
-                            <wm-form-field name="SecondrefMobnum" displayname="Mobile Number" widget="text" show="true" type="custom" required="false" inputtype="number" maxchars="10" key="SecondrefMobnum" placeholder="Enter value"></wm-form-field>
+                            <wm-form-field name="SecondrefMobnum" displayname="Mobile Number" widget="text" show="true" type="custom" required="false" inputtype="number" maxchars="10" key="SecondrefMobnum" placeholder="Enter value" maxvalue="9999999999"></wm-form-field>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="6" name="gridcolumn98">
                             <wm-form-field name="Secondreftelephonenum" displayname="Telephone Number" widget="text" show="true" type="custom" inputtype="number" maxvalue="15" key="Secondreftelephonenum" placeholder="Enter value"></wm-form-field>
@@ -468,34 +458,33 @@
                     <wm-gridrow name="gridrow71_2">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn89_1">
                             <wm-label padding="unset 0.5em" name="label10" caption=""></wm-label>
-                            <wm-form-field name="PreviousPPDetails_yes" displayname="Details of Previous/Current Diplomatic/Official Passport*" widget="radioset" show="true" type="custom" dataset="bind:Variables.DetailsOfPrevorCurrentPP.dataSet"
-                            captionalign="left" captionposition="top" layout="inline" datafield="dataValue" displayfield="dataValue" key="PreviousPPDetails_yes" placeholder=""></wm-form-field>
+                            <wm-form-field displayname="Details of Previous/Current Diplomatic/Official Passport*" widget="radioset" show="true" type="custom" name="PreviousPPDetails_yes" dataset="bind:Variables.DetailsOfPrevorCurrentPP.dataSet"
+                            captionalign="left" captionposition="top" layout="inline" datafield="dataValue" displayfield="dataValue"></wm-form-field>
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow name="gridrow72_2">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn91_1">
-                            <wm-container name="container9_previousDetails_PP" show="bind:Widgets.liveform1.formWidgets.PreviousPPDetails_yes.datavalue === 'Details Available'" deferload="false">
+                            <wm-container name="container9_previousDetails_PP" show="bind:Widgets.liveform1.formWidgets.PreviousPPDetails_yes.datavalue === 'Details Available'" deferload="false" class="bordered">
                                 <wm-layoutgrid name="layoutgrid6">
                                     <wm-gridrow name="gridrow75">
                                         <wm-gridcolumn columnwidth="12" name="gridcolumn92_2">
-                                            <wm-form-field name="PreviousPPnum" displayname="Passport Number" widget="text" show="true" type="custom" placeholder="Enter Passport Number" maxchars="8" required="true" width="100%" regexp="^(?!^0+$)[a-zA-Z0-9]{3,20}$"
-                                            validationmessage="Enter valid Passport Number" inputtype="text" key="PreviousPPnum"></wm-form-field>
+                                            <wm-form-field displayname="Passport Number" widget="text" show="true" type="custom" name="PreviousPPnum" placeholder="Enter Passport Number" maxchars="8" required="true" width="100%" regexp="^(?!^0+$)[a-zA-Z0-9]{3,20}$"
+                                            validationmessage="Enter valid Passport Number"></wm-form-field>
                                         </wm-gridcolumn>
                                     </wm-gridrow>
                                     <wm-gridrow name="gridrow76">
                                         <wm-gridcolumn columnwidth="6" name="gridcolumn97_1">
-                                            <wm-form-field name="PrevPPIssueDate" displayname="Date of Issue (DD/MM/YYYY)" widget="date" show="true" type="custom" datepattern="dd/MM/yyyy" required="true" mindate="1540/01/01" maxdate="CURRENT_DATE" width="100%"
-                                            outputformat="dd/MM/yyyy" key="PrevPPIssueDate" placeholder="Select date"></wm-form-field>
+                                            <wm-form-field displayname="Date of Issue (DD/MM/YYYY)" widget="date" show="true" type="custom" name="PrevPPIssueDate" datepattern="dd/MM/yyyy" required="true" mindate="bind:Widgets.liveform1.formWidgets.ApplicantDOB.datavalue"
+                                            maxdate="CURRENT_DATE" width="100%" outputformat="dd/MM/yyyy"></wm-form-field>
                                         </wm-gridcolumn>
                                         <wm-gridcolumn columnwidth="6" name="gridcolumn94_2">
-                                            <wm-form-field name="PrevPPExpiryDate" displayname="Date of Expiry (DD/MM/YYYY)" widget="date" show="true" type="custom" datepattern="dd/MM/yyyy" required="true" mindate="1540/01/01" width="100%" outputformat="dd/MM/yyyy"
-                                            showweeks="false" key="PrevPPExpiryDate" placeholder="Select date"></wm-form-field>
+                                            <wm-form-field displayname="Date of Expiry (DD/MM/YYYY)" widget="date" show="true" type="custom" datepattern="dd/MM/yyyy" required="true" mindate="bind:Widgets.liveform1.formWidgets.PrevPPIssueDate.datavalue" width="100%"
+                                            name="PrevPPExpiryDate" outputformat="dd/MM/yyyy" showweeks="false"></wm-form-field>
                                         </wm-gridcolumn>
                                     </wm-gridrow>
                                     <wm-gridrow name="gridrow77">
                                         <wm-gridcolumn columnwidth="12" name="gridcolumn96_1">
-                                            <wm-form-field name="PrevPP_IssuePlace" displayname="Place Of Issue" widget="text" show="true" type="custom" required="false" validationmessage="Enter Passport Issue Place" inputtype="text" key="PrevPP_IssuePlace"
-                                            placeholder="Enter value"></wm-form-field>
+                                            <wm-form-field displayname="Place Of Issue" widget="text" show="true" type="custom" name="PrevPP_IssuePlace" required="false" validationmessage="Enter Passport Issue Place"></wm-form-field>
                                         </wm-gridcolumn>
                                     </wm-gridrow>
                                 </wm-layoutgrid>
@@ -504,8 +493,159 @@
                     </wm-gridrow>
                     <wm-gridrow name="gridrow73_1">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn91_2">
-                            <wm-form-field name="passportissueStatus" displayname="Have you ever applied for passport, but not issued? *" widget="radioset" show="true" type="custom" captionalign="left" captionposition="top" dataset="Yes, No" layout="inline"
-                            key="passportissueStatus" placeholder=""></wm-form-field>
+                            <wm-form-field displayname="Have you ever applied for passport, but not issued?" widget="radioset" show="true" type="custom" name="passportapplicationStatus" captionalign="left" captionposition="top" dataset="Yes, No" layout="inline"
+                            required="true"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow74">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn91_3">
+                            <wm-panel iconclass="" autoclose="outsideClick" title="" name="passportApplicationdetails" show="bind:Widgets.liveform1.formWidgets.passportapplicationStatus.datavalue === 'Yes'">
+                                <wm-panel-footer name="panel_footer1">
+                                    <wm-layoutgrid name="layoutgrid7">
+                                        <wm-gridrow name="gridrow78">
+                                            <wm-gridcolumn columnwidth="6" name="gridcolumn96_2">
+                                                <wm-form-field displayname="Month and Year of Applying" widget="select" show="true" type="custom" name="monthandyear" dataset="bind:Variables.months.dataSet" datafield="dataValue" displayfield="dataValue"></wm-form-field>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="6" name="gridcolumn97_2">
+                                                <wm-form-field displayname="Year" widget="text" show="true" type="custom" name="ApplicationYear" required="true" maxchars="4" inputtype="number"></wm-form-field>
+                                            </wm-gridcolumn>
+                                        </wm-gridrow>
+                                    </wm-layoutgrid>
+                                    <wm-form-field displayname="Name Of Passport Office where Applied" widget="text" show="true" type="custom" name="form_field90" required="true" validationmessage="Enter passport office name and location"></wm-form-field>
+                                </wm-panel-footer>
+                                <wm-form-field displayname="File Number" widget="text" show="true" type="custom" name="FileNumber" inputtype="number"></wm-form-field>
+                            </wm-panel>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow80">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn101">
+                            <wm-label padding="unset 0.5em" caption="Other Details" fontsize="16" fontunit="px" fontweight="bold" backgroundcolor="#ddd2d2" width="100%" name="OtherDetails"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow81">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn102">
+                            <wm-form-field displayname="1) Have you ever been charged with criminal proceedings or any arrest warrant/ summon pending" widget="radioset" show="true" type="custom" name="form_otherinfo1" width="20%" dataset="Yes, No" captionalign="left"
+                            captionposition="top" required="true" layout="inline"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow82_1">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn101_1">
+                            <wm-panel iconclass="" autoclose="outsideClick" title="" name="panel2" show="bind:Widgets.liveform1.formWidgets.form_otherinfo1.datavalue === 'Yes'" content="CourtCaseProceedings"></wm-panel>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow82">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn103">
+                            <wm-form-field displayname="2) Have you at any time during the period of 5 years immediately preceeding the date of this application been convicted by a court in india for any criminal offence and sentenced to imprisonment for two years or more?"
+                            widget="radioset" show="true" type="custom" width="20%" dataset="Yes, No" name="form_othrInfo2" captionalign="left" captionposition="top" required="true" layout="inline"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow83">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn102_1">
+                            <wm-panel iconclass="" autoclose="outsideClick" title="" name="panel3" show="bind:Widgets.liveform1.formWidgets.form_othrInfo2.datavalue === 'Yes'" content="CourtCaseProceedings"></wm-panel>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow84">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn103_1">
+                            <wm-form-field displayname="3) Have you ever been Denied or Refused passport?" widget="radioset" show="true" type="custom" width="20%" dataset="Yes, No" captionalign="left" captionposition="top" required="true" layout="inline"
+                            name="form_othrInfo3"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow85">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn104">
+                            <wm-form-field displayname="Reason for Refusal" widget="textarea" show="bind:Widgets.liveform1.formWidgets.form_othrInfo3.datavalue === 'Yes'" type="custom" name="RefusalReason" placeholder="" required="true"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow86">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn105">
+                            <wm-form-field displayname="4) Has your Passport ever been Impounded or Revoked" widget="radioset" show="true" type="custom" name="form_othrInfo4" required="true" captionalign="left" captionposition="top" layout="inline" dataset="Yes,No"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow87">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn106">
+                            <wm-panel iconclass="" autoclose="outsideClick" title="" name="panel4" show="bind:Widgets.liveform1.formWidgets.form_othrInfo4.datavalue === 'Yes'">
+                                <wm-form-field displayname="Passport Number" widget="text" show="true" type="custom" placeholder="Enter Passport Number" maxchars="8" required="true" width="100%" regexp="^(?!^0+$)[a-zA-Z0-9]{3,20}$" validationmessage="Enter valid Passport Number"
+                                name="PassportNumber_othrInfo3"></wm-form-field>
+                                <wm-form-field displayname="Reason for Impounding/Revokation" widget="textarea" type="custom" placeholder="" required="true" name="Reason_impound_revocation"></wm-form-field>
+                            </wm-panel>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow88">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn107">
+                            <wm-form-field displayname="5) Have you ever applied for /been granted political asylum to/ by any foreign country?" widget="radioset" show="true" type="custom" required="true" captionalign="left" captionposition="top" layout="inline"
+                            dataset="Yes,No" name="form_othrInfo5"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow89">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn108">
+                            <wm-form-field displayname="Name of the country" widget="autocomplete" show="bind:Widgets.liveform1.formWidgets.form_othrInfo5.datavalue === 'Yes'" type="custom" name="otherInfo5data" required="true" dataset="bind:Variables.CountriesList.dataSet"
+                            searchkey="dataValue" displaylabel="dataValue" datafield="dataValue"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow90">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn109">
+                            <wm-form-field displayname="6) Have you ever returned to India on Emergency Certificate (EC) or were ever deported or repatriated?" widget="radioset" show="true" type="custom" required="true" captionalign="left" captionposition="top"
+                            layout="inline" dataset="Yes,No" name="form_othrInfo6"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow91">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn110">
+                            <wm-tile width="100%" name="tile1" show="bind:Widgets.liveform1.formWidgets.form_othrInfo6.datavalue === 'Yes'" class="bordered" backgroundposition="left">
+                                <wm-layoutgrid height="100%" name="layoutgrid8">
+                                    <wm-gridrow height="100%" name="gridrow92">
+                                        <wm-gridcolumn columnwidth="5" horizontalalign="center" name="gridcolumn111">
+                                            <wm-form-field displayname="EC No" widget="text" show="true" type="custom" name="form_Info6dataECnum" required="true"></wm-form-field>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="7" horizontalalign="center" name="gridcolumn112">
+                                            <wm-form-field displayname="Date of Issue (DD/MM/YYYY)" widget="date" show="true" type="custom" name="EC_IssueDate" required="true" placeholder="Enter Date" datepattern="dd/MM/yyyy" outputformat="dd/MM/yyyy" maxdate="CURRENT_DATE"
+                                            hint="Provide date 01/MM/YYYY in case cannot recall  exact date"></wm-form-field>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow94">
+                                        <wm-gridcolumn columnwidth="12" name="gridcolumn115">
+                                            <wm-form-field displayname="Country from where travelled on EC/Deported/Repatriated" widget="autocomplete" type="custom" name="TravelledonEC_countryname" required="true" dataset="bind:Variables.CountriesList.dataSet"
+                                            searchkey="dataValue" displaylabel="dataValue" datafield="dataValue" captionalign="left" captionposition="left"></wm-form-field>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow94_1">
+                                        <wm-gridcolumn columnwidth="12" name="gridcolumn114">
+                                            <wm-form-field displayname="Issuing Authority" widget="text" show="true" type="custom" name="EC_issueAuthority" required="true" placeholder="Issuing Authority details.." validationmessage="Enter Issuing Authority details"></wm-form-field>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                </wm-layoutgrid>
+                            </wm-tile>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow95">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn115_1">
+                            <wm-html name="html2">
+                                <h3>Self Declaration</h3>
+                                <p>I owe allegiance to the sovereignty , unity &amp; integrity of India, and have not voluntarily acquired citizenship or travel document of any other country. I have not lost, surrendered or been deprived of the the citizenship
+                                    of India and I affirm that the information given by me in this form and the enclosures is true and I solely responsible for its accuracy, and I am liable to be penalized or prosecuted if found otherwise. I am aware
+                                    that under the Passport Act, 1967 it is a criminal offence to furnish any false information or to suppress any material information with a view to obtaining passport or travel document.</p>
+                            </wm-html>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow96">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn116">
+                            <wm-form-field widget="checkbox" show="true" type="custom" name="form_Agreefinal" checkedvalue="Yes" required="true" captionalign="right" captionposition="right" caption="I Agree" disabled="bind:Widgets.liveform1.formWidgets.aadharAgreement.datavalue === 'No'"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow97">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn117">
+                            <wm-form-field displayname="Place" widget="text" show="true" type="custom" name="form_PlaceofApplicant" required="true"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn118">
+                            <wm-form-field displayname="Custom field" widget="datetime" show="true" type="custom" name="form_FormSubmittime" datepattern="dd/MM/yyyy hh:mm:ss a" defaultvalue="CURRENT_DATE" required="true" disabled="true"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow98">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn119">
+                            <wm-html name="Final_note">
+                                <h3><strong>Note:</strong></h3>
+                                <p>Applicants are required to submit the proof of address of the present address only, irrespective of the date from which he/she has been residing at the given address. However, he/she is required to mention all the places
+                                    of stay during previous one year (from the date of application filling) in the Passport application form.</p>
+                                <table border="2"></table>
+                            </wm-html>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>

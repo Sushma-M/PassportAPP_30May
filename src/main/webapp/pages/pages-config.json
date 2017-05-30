@@ -3,7 +3,7 @@
   "type" : "PARTIAL",
   "params" : [ ]
 }, {
-  "name" : "FreshPassport",
+  "name" : "CourtCaseProceedings",
   "type" : "PARTIAL",
   "params" : [ ]
 }, {
@@ -13,10 +13,6 @@
 }, {
   "name" : "Main",
   "type" : "PAGE",
-  "params" : [ ]
-}, {
-  "name" : "ReissueofPassport",
-  "type" : "PARTIAL",
   "params" : [ ]
 }, {
   "name" : "footer",
